@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {MatchDataService} from '../services/match-data.service';
 import {Match} from '../models/Match';
 import {ActivatedRoute} from '@angular/router';
-import * as moment from 'moment';
-import {Poste} from '../models/Poste';
 
 @Component({
   selector: 'app-match-page',
@@ -12,9 +10,7 @@ import {Poste} from '../models/Poste';
 })
 export class MatchPageComponent implements OnInit {
 
-  public MatchsListEnCours: Match[] = [];
-  public MatchsListFinis: Match[] = [];
-  public MatchsListAVenir: Match[] = [];
+  public matchs: Match[] = [];
   public id = '0';
   private interval: number;
 
@@ -22,13 +18,6 @@ export class MatchPageComponent implements OnInit {
   }
 
   async ngOnInit() {
-
-    // subscribe to pusher's event
-    this.matchDataService.getChannel().bind('update', (data) => {
-      const matchs = JSON.parse(data);
-      this.onChangeData(matchs);
-    });
-
     this.initialisationData();
   }
 
@@ -37,47 +26,8 @@ export class MatchPageComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params.id;
       this.matchDataService.getMatchsByTournoi(this.id).subscribe((matches: Match[]) => {
-        matches.map(match => {
-            if (match.dateFin == null ) {
-              if (match.dateDebut > (moment())) {
-                this.MatchsListAVenir.push(match);
-              } else {
-                this.MatchsListEnCours.push(match);
-
-              }
-            } else {
-              this.MatchsListFinis.push(match);
-            }
-          }
-
-        );
+        this.matchs = matches;
       });
     });
   }
-
-
-  onChangeData($data) {
-    const MatchsListFinisBis = [];
-    const MatchsListEnCoursBis = [];
-    const MatchsListAVenirBis = [];
-
-    $data.map(data => {
-            const match = Match.mapToMatch(data);
-            if (match.dateFin == null ) {
-              if (match.dateDebut > (moment())) {
-                MatchsListAVenirBis.push(match);
-              } else {
-                MatchsListEnCoursBis.push(match);
-
-              }
-            } else {
-              MatchsListFinisBis.push(match);
-            }
-          });
-
-    this.MatchsListFinis = MatchsListFinisBis;
-    this.MatchsListAVenir = MatchsListAVenirBis;
-    this.MatchsListEnCours = MatchsListEnCoursBis;
-  }
-
 }

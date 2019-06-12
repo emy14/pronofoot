@@ -14,7 +14,6 @@ import { ColorPaletteTypes } from 'src/app/enums/color-palette';
 import { ToasterService } from '../services/toaster.service';
 import {ActivatedRoute, Route, Router} from '@angular/router';
 import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
-import {AuthService} from '../services/auth.service';
 
 
 @Injectable()
@@ -26,7 +25,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     // --------------------------------------------------
 
 
-    constructor(private toasterService: ToasterService, private authService: AuthService) { }
+    constructor(private toasterService: ToasterService) { }
 
 
 
@@ -56,8 +55,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
                       case 401:
                             message = 'Vous n\'êtes pas autorisé à voir cette page!';
                             this.toasterService.displayToast(message, ColorPaletteTypes.warn, 3000);
-                            this.authService.logout();
-
                             break;
 
                         case 403:

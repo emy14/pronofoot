@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from './core/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +14,7 @@ export class AppComponent implements OnInit {
   // --------------------------------------------------
 
 
-  title = 'quidditchFront';
+  title = 'PronoFoot';
 
 
 
@@ -25,7 +24,6 @@ export class AppComponent implements OnInit {
 
 
   constructor(
-    public authService: AuthService
   ) { }
 
 
@@ -38,6 +36,5 @@ export class AppComponent implements OnInit {
    * On init, set locale to France and check if user is authentificated.
    */
   ngOnInit() {
-    this.authService.isAuthenticated();
   }
 }

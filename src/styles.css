@@ -4,6 +4,9 @@
 
 body{
     background-color: #f3f4f7;
+  background-image: url("https://static.cnews.fr/sites/default/files/styles/image_640_360/public/coupe-du-monde-2018.jpg?itok=JrFJvXsd");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /* Structure */

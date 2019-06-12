@@ -7,8 +7,14 @@ p{
     line-height: 50px;
     font-family: open-sans,sans-serif;
     font-size: 16px;
-    
+
 }
+
+.navbar-nav > li{
+  padding-left:10px;
+  padding-right:10px;
+}
+
 a{
     color: white;
 }
@@ -19,4 +25,8 @@ a.nav-link.active{
     display: flex;
     align-content: center;
     text-align: center;
+}
+
+.navbar-brand {
+  margin-left: 1%;
 }

@@ -1,7 +1,5 @@
 import {Component,  Input} from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {ModalScoreComponent} from '../../arbitrage/modal-score/modal-score.component';
-import {TournoiAdminAddComponent} from '../../admin-page/tournoi-admin/tournoi-admin-add/tournoi-admin-add.component';
 
 
 
@@ -27,22 +25,22 @@ export class NgbdModalFocus {
 
 
   open(name: string) {
-    switch (name) {
-      case 'score':
-        var modalRef =  this.modalService.open(ModalScoreComponent);
-        modalRef.componentInstance.match = this.content ;
-        modalRef. result.then(() => { }, () => { });
-
-        break;
-      case 'tournois':
-        var modalRef =  this.modalService.open(TournoiAdminAddComponent);
-        modalRef.componentInstance.oldTournoi = this.content ;
-        modalRef. result.then(() => {  }, () => { });
-
-        break;
-
-      default:
-
-    }
+    // switch (name) {
+    //   case 'score':
+    //     var modalRef =  this.modalService.open();
+    //     modalRef.componentInstance.match = this.content ;
+    //     modalRef. result.then(() => { }, () => { });
+    //
+    //     break;
+    //   case 'tournois':
+    //     var modalRef =  this.modalService.open();
+    //     modalRef.componentInstance.oldTournoi = this.content ;
+    //     modalRef. result.then(() => {  }, () => { });
+    //
+    //     break;
+    //
+    //   default:
+    //
+    // }
   }
 }
