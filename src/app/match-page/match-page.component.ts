@@ -25,8 +25,8 @@ export class MatchPageComponent implements OnInit {
   initialisationData() {
     this.route.params.subscribe(params => {
       this.id = params.id;
-      this.matchDataService.getMatchsByTournoi(this.id).subscribe((matches: Match[]) => {
-        this.matchs = matches;
+      this.matchDataService.getMatchs().subscribe((matchs: Match[]) => {
+        this.matchs = matchs;
       });
     });
   }

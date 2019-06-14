@@ -1,10 +1,6 @@
 import DateTimeFormat = Intl.DateTimeFormat;
-import {User} from './User';
-import {Equipe} from './Equipe';
-import {Terrain} from './Terrain';
 import * as moment from 'moment';
 import {Moment} from 'moment';
-import {Tournoi} from './Tournoi';
 
 
 export class Match {
@@ -24,17 +20,15 @@ export class Match {
    * @param {Object} [tournoi] - The tournoi
    */
   constructor(
-    public idMatch?: number,
-    public scorePremiereEquipe?: number,
-    public scoreDeuxiemeEquipe?: number,
-    public temps?: number,
-    public dateDebut?: Moment,
-    public dateFin?: Moment,
-    public arbitre?: User,
-    public terrain?: Terrain,
-    public tournoi?: Tournoi,
-    public premiereEquipe?: Equipe,
-    public deuxiemeEquipe?: Equipe
+    public id_match?: number,
+    private tournoi?: string,
+    public score_premiere_equipe?: number,
+    public score_deuxieme_equipe?: number,
+    public date_debut?: Moment,
+    public date_fin?: Moment,
+    public premiereEquipe?: string,
+    public deuxiemeEquipe?: string,
+    public prono?: string
 
   ) { }
 
@@ -56,41 +50,19 @@ export class Match {
    */
   static mapToMatch(data: any): Match {
 
-    const arbitre = User.mapToUser(data.arbitre);
-    const terrain = Terrain.mapToTerrain(data.terrain);
-    const premiereEquipe = Equipe.mapToEquipe(data.premiereEquipe);
-    const secondEquipe = Equipe.mapToEquipe(data.deuxiemeEquipe);
-    const date_debut =  data.dateDebut == null ? null : moment(data.dateDebut, 'YYYY-MM-DD HH:mm:ss');
-    const date_fin = data.dateFin == null ? null : moment(data.dateFin, 'YYYY-MM-DD HH:mm:ss');
-    const tournoi = Tournoi.mapToTournoi(data.tournoi);
-    return new Match(data.idMatch, data.scorePremiereEquipe, data.scoreDeuxiemeEquipe, data.temps, date_debut, date_fin, arbitre, terrain,
-      tournoi, premiereEquipe, secondEquipe);
+    const date_debut =  data.date_debut == null ? null : moment.unix(data.date_debut);
+    const date_fin = data.date_fin == null ? null :  moment.unix(data.date_fin);
+    var prono;
+    if (data.score_deuxieme_equipe > data.score_premiere_equipe) {
+      prono = data.deuxiemeEquipe;
+    } else if(data.score_deuxieme_equipe < data.score_premiere_equipe){
+      prono = data.premiereEquipe;
+    } else {
+      prono = "Match nul"
+    }
+    return new Match(data.id_match, data.tournoi, data.score_premiere_equipe, data.score_deuxieme_equipe, date_debut, date_fin,
+     data.premiereEquipe, data.deuxiemeEquipe, prono);
   }
 
-  static mapToMatchWithForm(angForm: any): Match {
-
-    const match = new Match();
-
-    match.dateDebut = angForm.dateDebut;
-    match.terrain = new Terrain();
-    match.terrain.idTerrain = angForm.terrain;
-
-    match.premiereEquipe = new Equipe();
-    match.premiereEquipe.idEquipe = angForm.premiereEquipe;
-
-    match.deuxiemeEquipe = new Equipe();
-    match.deuxiemeEquipe.idEquipe = angForm.deuxiemeEquipe;
-
-    match.tournoi = new Tournoi();
-    match.tournoi.idTournoi = angForm.tournoi;
-
-    match.arbitre = new User();
-    match.arbitre.idUtilisateur = angForm.arbitre;
-
-    match.dateDebut =  angForm.dateDebut == null ? null : moment(angForm.dateDebut, 'YYYY-MM-DD HH:mm:ss');
-    match.dateFin = angForm.dateFin == null ? null : moment(angForm.dateFin, 'YYYY-MM-DD HH:mm:ss');
-
-    return match;
-  }
 
 }

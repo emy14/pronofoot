@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { AppRoutingModule } from '../app-routing.module';
 import {CommonModule} from '@angular/common';
 import {NavbarreComponent} from './navbarre/navbarre.component';
-import {SidebarComponent} from './sidebar/sidebar.component';
 import {CoreServicesModule} from './services/core-services.module';
 import {ToastComponent} from './toast/toast.component';
 import {ErrorPageComponent} from './error-page/error-page.component';
@@ -17,7 +16,6 @@ import {ModalModule} from '../ui-component/modal/modal.module';
 @NgModule({
   declarations: [
     NavbarreComponent,
-    SidebarComponent,
     ErrorPageComponent,
     ToastComponent,
   ],
@@ -31,7 +29,6 @@ import {ModalModule} from '../ui-component/modal/modal.module';
   ],
   exports: [
     NavbarreComponent,
-    SidebarComponent,
     ToastComponent,
   ],
   schemas: [

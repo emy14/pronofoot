@@ -1,6 +1,6 @@
 {
-    "/utilisateurs": {
-        "target": "http://quidditchback.test/index.php/api/",
+    "/matchs": {
+        "target": "http://localhost:8080",
         "secure": false,
         "changeOrigin": true
     }

@@ -3,134 +3,35 @@
 
 <div class="container">
 
-    <div class="card">
+    <div *ngFor="let match of this.matchs;" class="card">
       <div class="card-header">
-        MONDE - LIGUE 1 - 13/06/2019 à 21H
+          {{ match.tournoi }}  - {{ match.date_debut.locale("fr").format("LLLL")}} 
       </div>
       <div class="card-body">
-        <h5 class="card-title">NOTRE PRONO : <h4>Victoire de la France</h4></h5>
+        <h5 class="card-title">NOTRE PRONO : <h4>Victoire :  {{ match.prono }} </h4></h5>
         <div class="card-text">
           <div class="row">
 
           <div class="col-sm">
-            <h6>France</h6>
+            <h6>{{ match.premiereEquipe}}</h6>
           </div>
           <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="image/jpeg">
+            <img src='/assets/img/{{match.premiereEquipe}}.png' alt="image/jpeg">
           </div>
 
           <div class="col-sm" id="nombre1">
-            2 -   0
+            {{match.score_premiere_equipe}} -   {{ match.score_deuxieme_equipe}}
           </div>
           <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="image/jpeg">
+            <img src='/assets/img/{{match.deuxiemeEquipe}}.png' alt="image/jpeg">
           </div>
           <div class="col-sm">
-            <h6> Italie </h6>
+            <h6> {{ match.deuxiemeEquipe }} </h6>
           </div>
           </div>
 
         </div>
       </div>
     </div>
-
-  <div class="card">
-    <div class="card-header">
-      MONDE - LIGUE 1 - 13/06/2019 à 21H
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">NOTRE PRONO : <h4>Victoire de la France</h4></h5>
-      <div class="card-text">
-        <div class="row">
-
-          <div class="col-sm">
-            <h6>France</h6>
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="image/jpeg">
-          </div>
-
-          <div class="col-sm" id="nombre1">
-            2 -   0
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="image/jpeg">
-          </div>
-          <div class="col-sm">
-            <h6> Italie </h6>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  </div>
-
-
-
-<div class="container">
-
-  <div class="card">
-    <div class="card-header">
-      MONDE - LIGUE 1 - 13/06/2019 à 21H
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">NOTRE PRONO : <h4>Victoire de la France</h4></h5>
-      <div class="card-text">
-        <div class="row">
-
-          <div class="col-sm">
-            <h6>France</h6>
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="image/jpeg">
-          </div>
-
-          <div class="col-sm" id="nombre1">
-            2 -   0
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="image/jpeg">
-          </div>
-          <div class="col-sm">
-            <h6> Italie </h6>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      MONDE - LIGUE 1 - 13/06/2019 à 21H
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">NOTRE PRONO : <h4>Victoire de la France</h4></h5>
-      <div class="card-text">
-        <div class="row">
-
-          <div class="col-sm">
-            <h6>France</h6>
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Flag_of_France.svg" alt="image/jpeg">
-          </div>
-
-          <div class="col-sm" id="nombre1">
-            2 -   0
-          </div>
-          <div class="col-sm">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/03/Flag_of_Italy.svg" alt="image/jpeg">
-          </div>
-          <div class="col-sm">
-            <h6> Italie </h6>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 </div>
