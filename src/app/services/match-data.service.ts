@@ -9,9 +9,6 @@ const urlMatchs = 'matchs';
 
 @Injectable()
 export class MatchDataService {
-
-
-
   // --------------------------------------------------
   //                     CONSTRUCTOR
   // --------------------------------------------------
@@ -20,12 +17,9 @@ export class MatchDataService {
   constructor(private http: HttpClient) {
   }
 
-
   // --------------------------------------------------
   //                     METHODS
   // --------------------------------------------------
-
-
   /**
    * Return all matchs from DB
    * @returns {Observable<Match[]>}

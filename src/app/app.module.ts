@@ -13,6 +13,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatNativeDateModule} from '@angular/material';
 import {ServicesModule} from './services/service.module';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
+import {LoginModule} from "./login-page/login.module";
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     MatNativeDateModule,
     ReactiveFormsModule,
+    LoginModule,
 
 
     FormsModule,

@@ -11,8 +11,6 @@ import {ActivatedRoute} from '@angular/router';
 export class MatchPageComponent implements OnInit {
 
   public matchs: Match[] = [];
-  public id = '0';
-  private interval: number;
 
   constructor(private route: ActivatedRoute, public matchDataService: MatchDataService) {
   }
@@ -23,11 +21,8 @@ export class MatchPageComponent implements OnInit {
 
 
   initialisationData() {
-    this.route.params.subscribe(params => {
-      this.id = params.id;
       this.matchDataService.getMatchs().subscribe((matchs: Match[]) => {
         this.matchs = matchs;
       });
-    });
   }
 }
